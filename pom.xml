@@ -72,6 +72,15 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+
+        <testResources>
+            <testResource>
+            <directory>src/test/java</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+        </testResource>
+    </testResources>
     </build>
 
 </project>
