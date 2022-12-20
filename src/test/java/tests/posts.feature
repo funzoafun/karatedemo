@@ -3,21 +3,6 @@ Feature: Api Test For My CRUD Demo Application
     * url 'http://localhost:8080'
     * header Accept = 'application/json'
 
-    # for all users
-  Scenario: Test a Get Operation
-    Given path '/users'
-    When method GET
-    Then status 200
-    And print response
-
-    #for a single user
-  Scenario: Test a Get Operation
-    Given path '/user/52'
-    When method GET
-    Then status 200
-    And print response
-    And print responseHeaders
-
     #to create a user
   Scenario: Test a POST Operation
     Given path '/user'
@@ -27,8 +12,12 @@ Feature: Api Test For My CRUD Demo Application
     And print response
     And print responseTime
 
-
-
-
-
+    #file in the same package
+  Scenario: POST data from external data file in same package
+    Given path '/user'
+    And def requestBody = read('userdata.json')
+    And request requestBody
+    When method POST
+    Then status 200
+    And print response
 
